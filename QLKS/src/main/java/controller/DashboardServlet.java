@@ -11,32 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Admin;
 import model.bean.Room;
-import model.service.IAdminService;
 import model.service.IRoomService;
-import model.service.impl.AdminService;
 import model.service.impl.RoomService;
 
-@WebServlet("/CheckLoginServlet")
-public class CheckLoginServlet extends HttpServlet {
+@WebServlet("/DashboardServlet")
+public class DashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IAdminService adminService;
+	
 	private IRoomService roomService;
-
-	public CheckLoginServlet() {
-		adminService = new AdminService();
+	public DashboardServlet() {
 		roomService = new RoomService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Admin admin = null;
-		if ((Admin) request.getSession().getAttribute("account") != null) {
-			admin = (Admin) request.getSession().getAttribute("account");
-		} else {
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			admin = adminService.getAccount(username, password);
-		}
+		Admin admin = (Admin)request.getSession().getAttribute("account");
 		if (admin != null) {
 			List<Room> adminRooms = roomService.findAllByAdminId(admin.getId());
 			request.setAttribute("rooms", adminRooms);
@@ -49,7 +38,6 @@ public class CheckLoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

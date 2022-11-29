@@ -1,7 +1,7 @@
 package model.bean;
 
 public class Room {
-	private int id;
+	private String id;
 	private String nameRoom;
 	private int numBed;
 	private String description;
@@ -9,7 +9,7 @@ public class Room {
 	private int admin_id;
 	public Room() {
 	}
-	public Room(int id, String nameRoom, int numBed, String description, double price, int admin_id) {
+	public Room(String id, String nameRoom, int numBed, String description, double price, int admin_id) {
 		this.id = id;
 		this.nameRoom = nameRoom;
 		this.numBed = numBed;
@@ -17,10 +17,10 @@ public class Room {
 		this.price = price;
 		this.admin_id = admin_id;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNameRoom() {
