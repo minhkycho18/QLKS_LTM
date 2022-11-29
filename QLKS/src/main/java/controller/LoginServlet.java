@@ -8,34 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.Admin;
 import model.service.AdminService;
 import model.service.IAdminService;
 
-@WebServlet("/CheckLoginServlet")
-public class CheckLoginServlet extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IAdminService adminService;
-	public CheckLoginServlet() {
-		adminService = new AdminService();
+	
+	public LoginServlet() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		Admin a = adminService.getAccount(username,password);
-		if (a!=null) {
-			request.getSession().setAttribute("account", a);
-			response.sendRedirect("dashboard.jsp");
-		} else {
-			response.sendRedirect("Login.jsp");
-		}
+		response.sendRedirect("Login.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
