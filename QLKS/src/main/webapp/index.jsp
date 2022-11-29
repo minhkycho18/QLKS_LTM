@@ -321,7 +321,7 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                <a class="nav-link" id="profileDropdown" href="LogoutServlet" data-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
@@ -342,7 +342,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="LogoutServlet" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -708,24 +708,24 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
+    <!-- <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    endinject
+    Plugin js for this page
     <script src="assets/vendors/chart.js/Chart.min.js"></script>
     <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
     <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+    End plugin js for this page
+    inject:js
     <script src="assets/js/off-canvas.js"></script>
     <script src="assets/js/hoverable-collapse.js"></script>
     <script src="assets/js/misc.js"></script>
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
+    endinject
+    Custom js for this page
     <script src="assets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
+    End custom js for this page -->
   </body>
 </html>

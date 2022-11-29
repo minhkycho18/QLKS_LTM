@@ -4,16 +4,12 @@ public class Admin {
 	private int id;
 	private String username;
 	private String password;
-	private String phone;
-	private String gmail;
 	public Admin() {
 	}
-	public Admin(int id, String username, String password, String phone, String gmail) {
+	public Admin(int id, String username, String password) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.phone = phone;
-		this.gmail = gmail;
 	}
 	public int getId() {
 		return id;
@@ -32,18 +28,6 @@ public class Admin {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getGmail() {
-		return gmail;
-	}
-	public void setGmail(String gmail) {
-		this.gmail = gmail;
 	}
 	
 	

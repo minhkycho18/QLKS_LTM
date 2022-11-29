@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mapper.IRowMapper;
+import model.dao.genericDao;
 
 
 public abstract class AbstractDao<T> implements genericDao<T>
@@ -17,10 +18,10 @@ public abstract class AbstractDao<T> implements genericDao<T>
 	public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/hotelbookingdb";
+			String url = "jdbc:mysql://localhost:3306/management_hotel";
 			String user = "root";
 			String password = "Quang123";
-			return DriverManager.getConnection(url, user, password);
+			return (Connection)DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException | SQLException e) {
 			return null;
 		}

@@ -5,24 +5,24 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `management_hotel` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `management_hotel` ;
 CREATE TABLE IF NOT EXISTS `management_hotel`.`admin` (
-  `ID` INT NOT NULL,
+  `id` INT NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`ID`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `management_hotel`.`room` (
   `id_room` VARCHAR(10) NOT NULL,
   `nameroom` VARCHAR(255) NOT NULL,
-  `numbed` INT NOT NULL,
+  `num_bed` INT NOT NULL,
   `description` TEXT NULL,
-  `price` FLOAT NOT NULL,
-  `admin_ID` INT NOT NULL,
-  PRIMARY KEY (`id_room`, `admin_ID`),
+  `price` DOUBLE NOT NULL,
+  `admin_id` INT NOT NULL,
+  PRIMARY KEY (`id_room`),
   INDEX `fk_room_admin_idx` (`admin_ID` ASC) VISIBLE,
   CONSTRAINT `fk_room_admin`
     FOREIGN KEY (`admin_ID`)
-    REFERENCES `management_hotel`.`admin` (`ID`)
+    REFERENCES `management_hotel`.`admin` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

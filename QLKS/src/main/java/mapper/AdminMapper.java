@@ -10,8 +10,7 @@ public class AdminMapper implements IRowMapper<Admin> {
 	public Admin MappingRow(ResultSet rs) {
 		Admin result = null;
 		try {
-			result = new Admin(rs.getInt("id"),rs.getString("username"),rs.getString("password"),
-									 rs.getString("phone"),rs.getString("gmail"));
+			result = new Admin(rs.getInt("id"),rs.getString("username"),rs.getString("password"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

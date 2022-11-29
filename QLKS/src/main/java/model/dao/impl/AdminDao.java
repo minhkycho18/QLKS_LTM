@@ -1,9 +1,10 @@
-package model.dao;
+package model.dao.impl;
 
 import java.util.List;
 
 import mapper.AdminMapper;
 import model.bean.Admin;
+import model.dao.IAdminDao;
 
 public class AdminDao extends AbstractDao<Admin> implements IAdminDao {
 

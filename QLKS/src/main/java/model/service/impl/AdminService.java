@@ -1,8 +1,9 @@
-package model.service;
+package model.service.impl;
 
 import model.bean.Admin;
-import model.dao.AdminDao;
 import model.dao.IAdminDao;
+import model.dao.impl.AdminDao;
+import model.service.IAdminService;
 
 public class AdminService implements IAdminService {
 	
