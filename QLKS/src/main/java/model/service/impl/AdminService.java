@@ -16,5 +16,16 @@ public class AdminService implements IAdminService {
 	public Admin getAccount(String username, String password) {
 		return adminDao.findOneByUsernameAndPassword(username,password);
 	}
+	@Override
+	public Long saveAccount(String username, String password, String email) {
+		boolean checkAccount = adminDao.checkExistAccount(username, email);
+		if ( checkAccount == false)
+			return null;
+		return adminDao.saveAccount(username, password, email);
+	}
+	@Override
+	public Admin findOneById(Long id) {
+		return adminDao.findOneById(id);
+	}
 	
 }

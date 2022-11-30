@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +31,8 @@ public class CheckLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Admin admin = null;
+		String func = request.getParameter("func");
+		// get admin
 		if ((Admin) request.getSession().getAttribute("account") != null) {
 			admin = (Admin) request.getSession().getAttribute("account");
 		} else {
@@ -37,14 +40,17 @@ public class CheckLoginServlet extends HttpServlet {
 			String password = request.getParameter("password");
 			admin = adminService.getAccount(username, password);
 		}
+		// redirect
 		if (admin != null) {
 			List<Room> adminRooms = roomService.findAllByAdminId(admin.getId());
+
 			request.setAttribute("rooms", adminRooms);
 			request.getSession().setAttribute("account", admin);
 			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("Login.jsp");
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

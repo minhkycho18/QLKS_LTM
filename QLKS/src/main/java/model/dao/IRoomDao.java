@@ -9,6 +9,8 @@ public interface IRoomDao extends genericDao<Room> {
 
 	List<Room> findAllByAdminId(int id);
 
+	void deleteRooms(String roomsDelete);
+
 	
 	
 }

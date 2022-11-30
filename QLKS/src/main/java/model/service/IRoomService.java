@@ -8,4 +8,6 @@ public interface IRoomService {
 
 	List<Room> findAllByAdminId(int id);
 
+	void deleteRooms(String[] listIdRooms);
+
 }

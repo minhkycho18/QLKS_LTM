@@ -18,5 +18,14 @@ public class RoomDao extends AbstractDao<Room> implements IRoomDao {
 		return query(sql, new RoomMapper(), id);
 	}
 
+	@Override
+	public void deleteRooms(String roomsDelete) {
+		String sql =  "DELETE "
+					+ "FROM room "
+					+ "WHERE id_room IN ( " + roomsDelete + " ) ";
+		update(sql, roomsDelete);
+		
+	}
+
 	
 }

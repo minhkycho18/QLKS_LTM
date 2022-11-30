@@ -1,4 +1,3 @@
-<%@page import="model.bean.Admin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.bean.Room"%>
@@ -55,9 +54,8 @@
 									class="count bg-success"></span>
 							</div>
 							<div class="profile-name">
-							<% Admin admin = (Admin) request.getSession().getAttribute("account"); %>
-								<h5 class="mb-0 font-weight-normal"><%= admin.getUsername() %></h5>
-								<span>Admin</span>
+								<h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+								<span>Gold Member</span>
 							</div>
 						</div>
 						<a href="#" id="profile-dropdown" data-toggle="dropdown"><i
@@ -106,21 +104,20 @@
 				<li class="nav-item nav-category"><span class="nav-link">Navigation</span>
 				</li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="DashboardServlet?func=get"> <span class="menu-icon">
-							<i class="mdi mdi-speedometer"></i>
-					</span> <span class="menu-title">Show Room</span>
+					href="DashboardServlet"> <span class="menu-icon"> <i
+							class="mdi mdi-speedometer"></i></span> <span class="menu-title">Show room</span>
 				</a></li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="pages/forms/basic_elements.jsp"> <span class="menu-icon">
+					href="DashboardServlet"> <span class="menu-icon">
 							<i class="mdi mdi-playlist-play"></i>
 					</span> <span class="menu-title">Form Elements</span>
 				</a></li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="DashboardServlet?func=delete"> <span class="menu-icon">
+					href="pages/tables/basic-table.html"> <span class="menu-icon">
 							<i class="mdi mdi-table-large"></i>
 					</span> <span class="menu-title">Delete Room</span>
 				</a></li>
-
+				
 				<li class="nav-item menu-items"><a class="nav-link"
 					href="pages/icons/mdi.html"> <span class="menu-icon"> <i
 							class="mdi mdi-contacts"></i>
@@ -329,7 +326,8 @@
 								<div class="navbar-profile">
 									<img class="img-xs rounded-circle"
 										src="assets/images/faces/face15.jpg" alt="">
-									<p class="mb-0 d-none d-sm-block navbar-profile-name"> <%= admin.getUsername() %></p>
+									<p class="mb-0 d-none d-sm-block navbar-profile-name">Henry
+										Klein</p>
 									<i class="mdi mdi-menu-down d-none d-sm-block"></i>
 								</div>
 						</a>
@@ -379,33 +377,38 @@
 								<div class="card-body">
 									<h4 class="card-title">Order Status</h4>
 									<div class="table-responsive">
-										<table class="table">
-											<thead>
-												<tr>
-													<th>ID</th>
-													<th>Room Name</th>
-													<th>Num Bed</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<%
-												List<Room> adminRooms = (ArrayList<Room>) request.getAttribute("rooms");
-												for (Room r : adminRooms) {
-												%>
-												<tr>
-													<td><%=r.getId()%></td>
-													<td><%=r.getNameRoom()%></td>
-													<td><%=r.getNumBed()%></td>
-													<td><%=r.getDescription()%></td>
-													<td><%=(int) r.getPrice()%>đ</td>
-												</tr>
-												<%
-												}
-												%>
-											</tbody>
-										</table>
+										<form action="DeleteServlet" method="POST">
+											<table class="table">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>Room Name</th>
+														<th>Num Bed</th>
+														<th>Description</th>
+														<th>Price</th>
+														<th>CheckDelete</th>
+													</tr>
+												</thead>
+												<tbody>
+													<%
+													List<Room> adminRooms = (ArrayList<Room>) request.getAttribute("rooms");
+													for (Room r : adminRooms) {
+													%>
+													<tr>
+														<td><%=r.getId()%></td>
+														<td><%=r.getNameRoom()%></td>
+														<td><%=r.getNumBed()%></td>
+														<td><%=r.getDescription()%></td>
+														<td><%=(int) r.getPrice()%>đ</td>
+														<td><input type="checkbox" name="checkedRows" value="<%=r.getId()%>"><td>
+													</tr>
+													<%
+													}
+													%>
+												</tbody>
+											</table>
+											<button type="submit" class="btn btn-outline-primary btn-block" value="login">Delete</button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -421,7 +424,7 @@
 		<!-- <!-- container-scroller -->
 		<script src="assets/vendors/js/vendor.bundle.base.js"></script>
 		<script src="assets/vendors/chart.js/Chart.min.js"></script>
-		<!-- <script src="assets/vendors/progressbar.js/progressbar.min.js"></script> -->
+		<script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
 		<script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
 		<script
 			src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -430,7 +433,7 @@
 		<script src="assets/js/hoverable-collapse.js"></script>
 		<script src="assets/js/misc.js"></script>
 		<script src="assets/js/settings.js"></script>
-		<!-- <script src="assets/js/todolist.js"></script> -->
-		<!-- <script src="assets/js/dashboard.js"></script> -->
+		<script src="assets/js/todolist.js"></script>
+		<script src="assets/js/dashboard.js"></script>
 </body>
 </html>

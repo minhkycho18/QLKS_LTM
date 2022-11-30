@@ -1,4 +1,4 @@
-INSERT INTO `management_hotel`.`admin` (`ID`, `name`, `username`, `password`) VALUES ('1', 'Paradise', 'laptrinhmang', '123456');
+INSERT INTO `management_hotel`.`admin` (`ID`, `name`, `username`, `password`,`email`) VALUES ('1', 'Paradise', 'laptrinhmang', '123456','ltm@gmail.com');
 
 INSERT INTO `management_hotel`.`room` (`id_room`, `nameroom`, `num_bed`, `description`, `price`, `admin_id`) VALUES ('H101', 'Phòng cặp đôi thường', '1', 'View thơ mộng, đầy đủ tiện nghi', '250000', '1');
 INSERT INTO `management_hotel`.`room` (`id_room`, `nameroom`, `num_bed`, `description`, `price`, `admin_id`) VALUES ('H201', 'Phòng gia đình thường', '2', 'View thành phố tráng lệ, đầy đủ tiện nghi', '500000', '1');

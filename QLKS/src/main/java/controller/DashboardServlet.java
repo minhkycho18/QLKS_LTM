@@ -26,10 +26,16 @@ public class DashboardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Admin admin = (Admin)request.getSession().getAttribute("account");
+		String func = request.getParameter("func");
 		if (admin != null) {
 			List<Room> adminRooms = roomService.findAllByAdminId(admin.getId());
 			request.setAttribute("rooms", adminRooms);
 			request.getSession().setAttribute("account", admin);
+			if(func.equals("delete"))
+			{
+				request.getRequestDispatcher("DeleteRoom.jsp").forward(request, response);
+				return;
+			}
 			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("Login.jsp");

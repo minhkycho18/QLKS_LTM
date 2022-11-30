@@ -21,4 +21,20 @@ public class RoomService implements IRoomService {
 		return roomDao.findAllByAdminId(id);
 	}
 
+	@Override
+	public void deleteRooms(String[] listIdRooms) {
+		StringBuilder sb = new StringBuilder();
+		for(String id : listIdRooms)
+		{
+			sb.append("'" + id + "'");
+			if(id.equals(listIdRooms[listIdRooms.length-1]))
+			{
+				continue;
+			}
+			sb.append(",");
+		}
+		roomDao.deleteRooms(sb.toString());
+		
+	}
+
 }
