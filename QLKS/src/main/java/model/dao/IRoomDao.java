@@ -8,7 +8,9 @@ import model.bean.Room;
 public interface IRoomDao extends genericDao<Room> {
 
 	List<Room> findAllByAdminId(int id);
-
+	
+	List<Room> searchRoom(String name);
+	
 	void deleteRooms(String roomsDelete);
 
 	Room findOneById(String idRoom);

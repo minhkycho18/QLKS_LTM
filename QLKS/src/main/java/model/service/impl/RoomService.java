@@ -48,4 +48,10 @@ public class RoomService implements IRoomService {
 		
 	}
 
+	@Override
+	public List<Room> searchRoom(String name) {
+		return roomDao.searchRoom(name);
+	}
+
+
 }

@@ -45,5 +45,15 @@ public class RoomDao extends AbstractDao<Room> implements IRoomDao {
 		
 	}
 
+	@Override
+	public List<Room> searchRoom(String name) {
+		String sql =  "SELECT * "
+				+ "FROM room "
+				+ "WHERE nameroom LIKE '%?%'";
+	return query(sql, new RoomMapper(), name);
+	}
+
+
+
 	
 }
