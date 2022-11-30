@@ -73,7 +73,9 @@ public abstract class AbstractDao<T> implements genericDao<T>
 					statement.setTimestamp(index, (Timestamp) param);
 				} else if (param instanceof Integer) {
 					statement.setInt(index, (Integer) param);
-				}
+				} else if (param instanceof Double) {
+					statement.setDouble(index, (Double) param);
+				} 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -102,52 +102,20 @@
 					</div>
 				</li>
 				<li class="nav-item nav-category"><span class="nav-link">Navigation</span>
-				</li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="DashboardServlet"> <span class="menu-icon"> <i
-							class="mdi mdi-speedometer"></i></span> <span class="menu-title">Show room</span>
+					href="DashboardServlet?func=get"> <span class="menu-icon">
+							<i class="mdi mdi-speedometer"></i>
+					</span> <span class="menu-title">Show Room</span>
 				</a></li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="DashboardServlet"> <span class="menu-icon">
+					href="pages/forms/basic_elements.jsp"> <span class="menu-icon">
 							<i class="mdi mdi-playlist-play"></i>
 					</span> <span class="menu-title">Form Elements</span>
 				</a></li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="pages/tables/basic-table.html"> <span class="menu-icon">
+					href="DashboardServlet?func=delete"> <span class="menu-icon">
 							<i class="mdi mdi-table-large"></i>
 					</span> <span class="menu-title">Delete Room</span>
-				</a></li>
-				
-				<li class="nav-item menu-items"><a class="nav-link"
-					href="pages/icons/mdi.html"> <span class="menu-icon"> <i
-							class="mdi mdi-contacts"></i>
-					</span> <span class="menu-title">Icons</span>
-				</a></li>
-				<li class="nav-item menu-items"><a class="nav-link"
-					data-toggle="collapse" href="#auth" aria-expanded="false"
-					aria-controls="auth"> <span class="menu-icon"> <i
-							class="mdi mdi-security"></i>
-					</span> <span class="menu-title">User Pages</span> <i class="menu-arrow"></i>
-				</a>
-					<div class="collapse" id="auth">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-item"><a class="nav-link"
-								href="pages/samples/blank-page.html"> Blank Page </a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="pages/samples/error-404.html"> 404 </a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="pages/samples/error-500.html"> 500 </a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="pages/samples/login.html"> Login </a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="pages/samples/register.html"> Register </a></li>
-						</ul>
-					</div></li>
-				<li class="nav-item menu-items"><a class="nav-link"
-					href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-						<span class="menu-icon"> <i
-							class="mdi mdi-file-document-box"></i>
-					</span> <span class="menu-title">Documentation</span>
 				</a></li>
 			</ul>
 		</nav>
@@ -423,7 +391,7 @@
 		</div>
 		<!-- <!-- container-scroller -->
 		<script src="assets/vendors/js/vendor.bundle.base.js"></script>
-		<script src="assets/vendors/chart.js/Chart.min.js"></script>
+		<!-- <script src="assets/vendors/chart.js/Chart.min.js"></script>
 		<script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
 		<script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
 		<script
@@ -434,6 +402,6 @@
 		<script src="assets/js/misc.js"></script>
 		<script src="assets/js/settings.js"></script>
 		<script src="assets/js/todolist.js"></script>
-		<script src="assets/js/dashboard.js"></script>
+		<script src="assets/js/dashboard.js"></script> -->
 </body>
 </html>

@@ -11,6 +11,10 @@ public interface IRoomDao extends genericDao<Room> {
 
 	void deleteRooms(String roomsDelete);
 
+	Room findOneById(String idRoom);
+
+	void updateRoom(String idRoom, String nameRoom, int numOfBed, double price, String description);
+
 	
 	
 }

@@ -27,5 +27,23 @@ public class RoomDao extends AbstractDao<Room> implements IRoomDao {
 		
 	}
 
+	@Override
+	public Room findOneById(String idRoom) {
+		String sql = "SELECT * "
+					+ "FROM room "
+					+ "WHERE id_room = ? ";
+		return query(sql, new RoomMapper(), idRoom).get(0);
+	}
+
+	@Override
+	public void updateRoom(String idRoom, String nameRoom, int numOfBed, double price, String description) {
+		String sql = "UPDATE room "
+					+"SET nameroom = ? , num_bed = ? , description = ? , price = ? "
+					+"WHERE id_room = ? ";
+		update(sql, nameRoom, numOfBed, description, price, idRoom);
+		
+		
+	}
+
 	
 }

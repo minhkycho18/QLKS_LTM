@@ -48,7 +48,17 @@
                     <button type="submit" class="btn btn-primary btn-block enter-btn" value="login">Login</button>
                   </div>
                 </form>
-                <p class="sign-up">Don't have an Account?<a href="RegisterServlet"> Sign Up</a></p>
+                <%
+                  	String responseMsg = (String)request.getAttribute("message");
+                  	if(responseMsg != null)
+                  	{
+                  %>
+                  <div class = "d-flex justify-content-center">
+                  	<span class="badge badge-pill badge-danger"><%= responseMsg %></span>
+                  </div>
+                  <%
+                  	}
+                  %>
               </div>
             </div>
           </div>
@@ -65,11 +75,11 @@
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
+    <!-- <script src="assets/js/off-canvas.js"></script>
     <script src="assets/js/hoverable-collapse.js"></script>
     <script src="assets/js/misc.js"></script>
     <script src="assets/js/settings.js"></script>
-    <script src="assets/js/todolist.js"></script>
+    <script src="assets/js/todolist.js"></script> -->
     <!-- endinject -->
   </body>
 </html>

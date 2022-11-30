@@ -32,6 +32,8 @@ public class CheckLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		Admin admin = null;
 		String func = request.getParameter("func");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		// get admin
 		if ((Admin) request.getSession().getAttribute("account") != null) {
 			admin = (Admin) request.getSession().getAttribute("account");
@@ -48,7 +50,9 @@ public class CheckLoginServlet extends HttpServlet {
 			request.getSession().setAttribute("account", admin);
 			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("Login.jsp");
+			String responseMsg = "Sai tài khoản hoặc mật khẩu";
+			request.setAttribute("message", responseMsg);
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 
 	}

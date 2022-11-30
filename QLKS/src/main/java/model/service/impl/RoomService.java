@@ -37,4 +37,15 @@ public class RoomService implements IRoomService {
 		
 	}
 
+	@Override
+	public Room findOneById(String idRoom) {
+		return roomDao.findOneById(idRoom);
+	}
+
+	@Override
+	public void updateRoom(String idRoom, String nameRoom, int numOfBed, double price, String description) {
+		roomDao.updateRoom(idRoom, nameRoom, numOfBed, price, description);
+		
+	}
+
 }
