@@ -1,5 +1,6 @@
 package model.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.bean.Room;
@@ -51,6 +52,22 @@ public class RoomService implements IRoomService {
 	@Override
 	public List<Room> searchRoom(String name) {
 		return roomDao.searchRoom(name);
+	}
+	public void addRoom(String idRoom, String nameRoom, int numOfBed, String description, double price) {
+		roomDao.addRoom(idRoom, nameRoom, numOfBed, description, price);
+	}
+
+	@Override
+	public boolean isExistIdRoom(String idRoom) {
+		List<String> ids = new ArrayList<>();
+		List<Room> rooms = roomDao.getAllRooms();
+		for(Room room : rooms) {
+			ids.add(room.getId());
+		}
+		if(ids.contains(idRoom)) {
+			return true;
+		}
+		return false;
 	}
 
 

@@ -15,5 +15,9 @@ public interface IRoomService {
 	Room findOneById(String idRoom);
 
 	void updateRoom(String idRoom, String nameRoom, int numOfBed, double price, String description);
+
+	boolean isExistIdRoom(String idRoom);
+	
+	public void addRoom(String idRoom, String nameRoom, int numOfBed, String description, double price);
 	
 }

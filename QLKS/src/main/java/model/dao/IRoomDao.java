@@ -17,6 +17,10 @@ public interface IRoomDao extends genericDao<Room> {
 
 	void updateRoom(String idRoom, String nameRoom, int numOfBed, double price, String description);
 
+	void addRoom(String idRoom, String nameRoom, int numOfBed, String description, double price);
+
+	List<Room> getAllRooms();
+
 	
 	
 }

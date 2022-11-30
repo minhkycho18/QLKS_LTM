@@ -49,8 +49,19 @@ public class RoomDao extends AbstractDao<Room> implements IRoomDao {
 	public List<Room> searchRoom(String name) {
 		String sql =  "SELECT * "
 				+ "FROM room "
-				+ "WHERE nameroom LIKE '%?%'";
-	return query(sql, new RoomMapper(), name);
+				+ "WHERE id_room LIKE ?";
+	return query(sql, new RoomMapper(), "%" + name + "%");
+	}
+	public void addRoom(String idRoom, String nameRoom, int numOfBed, String description, double price) {
+		String sql = "INSERT "
+				     + "INTO `management_hotel`.`room` (`id_room`, `nameroom`, `num_bed`, `description`, `price`, `admin_id`) "
+				   + "VALUES (?,?,?,?,?,1)";
+		insert(sql, idRoom, nameRoom, numOfBed, description, price);
+	}
+	@Override
+	public List<Room> getAllRooms() {
+		String sql = "SELECT * FROM room";
+		return query(sql, new RoomMapper());
 	}
 
 

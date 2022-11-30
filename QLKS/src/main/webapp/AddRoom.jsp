@@ -1,7 +1,4 @@
 <%@page import="model.bean.Admin"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="model.bean.Room"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,14 +15,9 @@
 <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
 <!-- endinject -->
 <!-- Plugin css for this page -->
+<link rel="stylesheet" href="assets/vendors/select2/select2.min.css">
 <link rel="stylesheet"
-	href="assets/vendors/jvectormap/jquery-jvectormap.css">
-<link rel="stylesheet"
-	href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
-<link rel="stylesheet"
-	href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+	href="assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
 <!-- End plugin css for this page -->
 <!-- inject:css -->
 <!-- endinject -->
@@ -36,13 +28,13 @@
 </head>
 <body>
 	<div class="container-scroller">
-		<!-- partial:partials/_sidebar.html -->
+		<!-- partial:../../partials/_sidebar.html -->
 		<nav class="sidebar sidebar-offcanvas" id="sidebar">
 			<div
 				class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
 				<a class="sidebar-brand brand-logo" href="index.html"><img
 					src="assets/images/logo.svg" alt="logo" /></a> <a
-					class="sidebar-brand brand-logo-mini" href="index.html"><img
+					class="sidebar-brand brand-logo-mini" href="index.jsp"><img
 					src="assets/images/logo-mini.svg" alt="logo" /></a>
 			</div>
 			<ul class="nav">
@@ -55,8 +47,10 @@
 									class="count bg-success"></span>
 							</div>
 							<div class="profile-name">
-							<% Admin admin = (Admin) request.getSession().getAttribute("account"); %>
-								<h5 class="mb-0 font-weight-normal"><%= admin.getUsername() %></h5>
+								<%
+								Admin admin = (Admin) request.getSession().getAttribute("account");
+								%>
+								<h5 class="mb-0 font-weight-normal"><%=admin.getUsername()%></h5>
 								<span>Admin</span>
 							</div>
 						</div>
@@ -116,21 +110,20 @@
 					</span> <span class="menu-title">Delete Room</span>
 				</a></li>
 				<li class="nav-item menu-items"><a class="nav-link"
-					href="AddRoomServlet"> <span class="menu-icon">
-							<i class="mdi mdi-table-large"></i>
+					href="AddRoomServlet"> <span class="menu-icon"> <i
+							class="mdi mdi-table-large"></i>
 					</span> <span class="menu-title">Add Room</span>
 				</a></li>
-				
 			</ul>
 		</nav>
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
-			<!-- partial:partials/_navbar.html -->
+			<!-- partial:../../partials/_navbar.html -->
 			<nav class="navbar p-0 fixed-top d-flex flex-row">
 				<div
 					class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-					<a class="navbar-brand brand-logo-mini" href="index.html"><img
-						src="assets/images/logo-mini.svg" alt="logo" /></a>
+					<a class="navbar-brand brand-logo-mini" href="../../index.html"><img
+						src="../../assets/images/logo-mini.svg" alt="logo" /></a>
 				</div>
 				<div
 					class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -140,13 +133,14 @@
 					</button>
 					<ul class="navbar-nav w-100">
 						<li class="nav-item w-100">
-							<form action="HandleSearchServlet" method="post" class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-								<input type="text" name = "search"  class="form-control"
+							<form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+								<input type="text" class="form-control"
 									placeholder="Search products">
 							</form>
 						</li>
 					</ul>
 					<ul class="navbar-nav navbar-nav-right">
+						
 						<li class="nav-item nav-settings d-none d-lg-block"><a
 							class="nav-link" href="#"> <i class="mdi mdi-view-grid"></i>
 						</a></li>
@@ -163,7 +157,7 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item preview-item">
 									<div class="preview-thumbnail">
-										<img src="assets/images/faces/face4.jpg" alt="image"
+										<img src="../../assets/images/faces/face4.jpg" alt="image"
 											class="rounded-circle profile-pic">
 									</div>
 									<div class="preview-item-content">
@@ -175,7 +169,7 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item preview-item">
 									<div class="preview-thumbnail">
-										<img src="assets/images/faces/face2.jpg" alt="image"
+										<img src="../../assets/images/faces/face2.jpg" alt="image"
 											class="rounded-circle profile-pic">
 									</div>
 									<div class="preview-item-content">
@@ -187,7 +181,7 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item preview-item">
 									<div class="preview-thumbnail">
-										<img src="assets/images/faces/face3.jpg" alt="image"
+										<img src="../../assets/images/faces/face3.jpg" alt="image"
 											class="rounded-circle profile-pic">
 									</div>
 									<div class="preview-item-content">
@@ -273,7 +267,7 @@
 									</div>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="LogoutServlet" class="dropdown-item preview-item">
+								<a class="dropdown-item preview-item">
 									<div class="preview-thumbnail">
 										<div class="preview-icon bg-dark rounded-circle">
 											<i class="mdi mdi-logout text-danger"></i>
@@ -297,71 +291,86 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
-					<div class="row ">
-						<div class="col-12 grid-margin">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Order Status</h4>
-									<div class="table-responsive">
-										<table class="table">
-											<thead>
-												<tr>
-													<th>ID</th>
-													<th>Room Name</th>
-													<th>Num Bed</th>
-													<th>Description</th>
-													<th>Price</th>
-													<th>Update</th>
-												</tr>
-											</thead>
-											<tbody>
-												<%
-												List<Room> adminRooms = (ArrayList<Room>) request.getAttribute("rooms");
-												for (Room r : adminRooms) {
-												%>
-												<tr>
-													<td><%=r.getId()%></td>
-													<td><%=r.getNameRoom()%></td>
-													<td><%=r.getNumBed()%></td>
-													<td><%=r.getDescription()%></td>
-													<td><%=(int) r.getPrice()%>đ</td>
-													<td>
-														<button class = "btn btn-outline-primary">
-															<a style="color:white" href="UpdateRoomServlet?id=<%= r.getId() %>">Update</a>
-															
-														</button>
-													</td>
-												</tr>
-												<%
-												}
-												%>
-											</tbody>
-										</table>
+					
+								<form class="forms-sample" action="AddRoomServlet" method="post">
+									<%
+
+									%>
+									<div class="form-group">
+										<label for="exampleInputEmail3">ID room</label>
+										<!-- <input type="text" class="form-control" id="exampleInputName1" > -->
+										<input type="text" class="form-control" id="" name="ID">
 									</div>
-								</div>
+									<div class="form-group">
+										<label for="exampleInputEmail3">Name room</label> <input
+											type="text" class="form-control" id="" name="nameroom">
+									</div>
+									<div class="form-group">
+										<label for="exampleSelectGender">Num of bed</label> <select
+											class="form-control" id="exampleSelectGender" name="numofbed">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword4">Description</label>
+										<!-- <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password"> -->
+										<textarea class="form-control" id="exampleTextarea1" rows="4"
+											name="description"></textarea>
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputCity1">Price (1 night)</label> <input
+											type="text" class="form-control" id="exampleInputCity1"
+											placeholder="Ex: 100000" name="price">
+									</div>
+									
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary mr-2">Submit</button>
+										<button class="btn btn-dark">Cancel</button>
+									</div>
+									<%
+									String responseMsg = (String) request.getAttribute("message");
+									if (responseMsg != null) {
+									%>
+									<div class="d-flex justify-content-center">
+										<span class="badge badge-pill badge-danger"><%=responseMsg%></span>
+									</div>
+									<%
+									}
+									%>
+								</form>
 							</div>
 						</div>
 					</div>
-
+				
 					<!-- partial -->
 				</div>
 				<!-- main-panel ends -->
 			</div>
 			<!-- page-body-wrapper ends -->
 		</div>
-		<!-- <!-- container-scroller -->
-		<script src="assets/vendors/js/vendor.bundle.base.js"></script>
-		<!-- <script src="assets/vendors/chart.js/Chart.min.js"></script>
-		<script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
-		<script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+		<!-- container-scroller -->
+		<!-- plugins:js -->
+		<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+		<!-- endinject -->
+		<!-- Plugin js for this page -->
+		<script src="../../assets/vendors/select2/select2.min.js"></script>
 		<script
-			src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-		<script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-		<script src="assets/js/off-canvas.js"></script>
-		<script src="assets/js/hoverable-collapse.js"></script>
-		<script src="assets/js/misc.js"></script>
-		<script src="assets/js/settings.js"></script> -->
-		<!-- <script src="assets/js/todolist.js"></script> -->
-		<!-- <script src="assets/js/dashboard.js"></script> -->
+			src="../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+		<!-- End plugin js for this page -->
+		<!-- inject:js -->
+		<!-- <script src="../../assets/js/off-canvas.js"></script>
+		<script src="../../assets/js/hoverable-collapse.js"></script>
+		<script src="../../assets/js/misc.js"></script>
+		<script src="../../assets/js/settings.js"></script>
+		<script src="../../assets/js/todolist.js"></script> -->
+		<!-- endinject -->
+		<!-- Custom js for this page -->
+		<script src="../../assets/js/file-upload.js"></script>
+		<script src="../../assets/js/typeahead.js"></script>
+		<script src="../../assets/js/select2.js"></script>
+		<!-- End custom js for this page -->
 </body>
 </html>
