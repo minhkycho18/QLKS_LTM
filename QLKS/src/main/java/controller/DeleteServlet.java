@@ -27,11 +27,15 @@ public class DeleteServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String[] listIdRooms = request.getParameterValues("checkedRows");
-		roomService.deleteRooms(listIdRooms);
 		Admin admin = (Admin)request.getSession().getAttribute("account");
 		List<Room> adminRooms = roomService.findAllByAdminId(admin.getId());
 		request.setAttribute("rooms", adminRooms);
+		String[] listIdRooms = request.getParameterValues("checkedRows");
+		if(listIdRooms == null) {
+			request.setAttribute("message", "Please choose your choice!");
+		} else {
+			roomService.deleteRooms(listIdRooms);			
+		}
 		request.getRequestDispatcher("DeleteRoom.jsp").forward(request, response);
 	}
 

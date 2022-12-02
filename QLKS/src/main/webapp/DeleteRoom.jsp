@@ -1,3 +1,4 @@
+<%@page import="model.bean.Admin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.bean.Room"%>
@@ -10,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Corona Admin</title>
+<title>Lap Trinh Mang</title>
 <!-- plugins:css -->
 <link rel="stylesheet"
 	href="assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -54,8 +55,11 @@
 									class="count bg-success"></span>
 							</div>
 							<div class="profile-name">
-								<h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-								<span>Gold Member</span>
+								<%
+									Admin admin = (Admin) request.getSession().getAttribute("account");
+								%>
+								<h5 class="mb-0 font-weight-normal"><%= admin.getUsername()%></h5>
+								<span>Admin</span>
 							</div>
 						</div>
 						<a href="#" id="profile-dropdown" data-toggle="dropdown"><i
@@ -250,8 +254,7 @@
 								<div class="navbar-profile">
 									<img class="img-xs rounded-circle"
 										src="assets/images/faces/face15.jpg" alt="">
-									<p class="mb-0 d-none d-sm-block navbar-profile-name">Henry
-										Klein</p>
+									<p class="mb-0 d-none d-sm-block navbar-profile-name"><%=admin.getUsername()%></p>
 									<i class="mdi mdi-menu-down d-none d-sm-block"></i>
 								</div>
 						</a>
@@ -326,10 +329,18 @@
 														<td><%=(int) r.getPrice()%>đ</td>
 														<td><input type="checkbox" name="checkedRows" value="<%=r.getId()%>"><td>
 													</tr>
+													<%} %>
+												</tbody>
+													<%
+														String responseMsg = (String) request.getAttribute("message");
+														if (responseMsg != null) {
+													%>
+													<div class="d-flex justify-content-center">
+														<span class="badge badge-pill badge-danger"><%=responseMsg%></span>
+													</div>
 													<%
 													}
 													%>
-												</tbody>
 											</table>
 											<button type="submit" class="btn btn-outline-primary btn-block" value="login">Delete</button>
 										</form>
